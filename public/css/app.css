@@ -140,6 +140,39 @@ tr:last-child td { border-bottom: 0; }
 .empty p { margin-bottom: 1rem; }
 nav[role=navigation] ul { display: flex; gap: 1rem; list-style: none; padding: 0; }
 
+/* rating levels (always shown with a text label, not color alone) */
+.level-low { background: #3f8f5f; }
+.level-moderate { background: #d8b23a; }
+.level-high { background: #e07b39; }
+.level-very-high { background: #b3261e; }
+
+.rating { margin-bottom: 1.5rem; }
+.rating h2 { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+.rating > p:first-of-type { margin-bottom: 1.5rem; }
+.badge { color: #fff; font-size: .8rem; font-weight: 700; padding: .2rem .65rem; border-radius: 99px; }
+.badge.level-moderate { color: #1d2420; }
+
+.gauge { position: relative; display: flex; height: 14px; border-radius: 99px; margin: 1.75rem 0 .75rem; }
+.gauge-seg:first-child { border-radius: 99px 0 0 99px; }
+.gauge-seg.level-very-high { border-radius: 0 99px 99px 0; }
+.gauge-marker { position: absolute; top: -6px; bottom: -6px; width: 4px; margin-left: -2px; background: var(--text); border-radius: 2px; }
+.gauge-marker span { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); font-size: .75rem; font-weight: 700; margin-bottom: 2px; }
+.gauge-legend { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; list-style: none; padding: 0; margin: 0; font-size: .85rem; color: var(--muted); }
+.gauge-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: .3rem; }
+.gauge-legend strong { color: var(--text); font-weight: 600; }
+
+/* about */
+.hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.toc { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; margin-bottom: 2rem; }
+.prose { margin-bottom: 2.5rem; scroll-margin-top: 1rem; }
+.prose h2 { font-size: 1.4rem; }
+.prose h3 { margin-top: 1.25rem; }
+.prose p, .prose li { max-width: 68ch; }
+.prose ul, .prose ol { padding-left: 1.25rem; }
+.prose li { margin-bottom: .4rem; }
+.prose .card { margin-bottom: 1rem; }
+.formula { font-family: ui-monospace, Consolas, monospace; background: var(--accent-soft); padding: .7rem 1rem; border-radius: 8px; }
+
 @media (max-width: 560px) {
     h1, .hero h1 { font-size: 1.6rem; }
     .tip { flex-direction: column; align-items: flex-start; }

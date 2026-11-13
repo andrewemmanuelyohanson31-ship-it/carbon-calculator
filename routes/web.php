@@ -4,6 +4,7 @@ use App\Http\Controllers\CalculatorController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'landing')->name('home');
+Route::view('/about', 'about')->name('about');
 
 Route::controller(CalculatorController::class)->group(function () {
     Route::get('/calculator', 'choose')->name('calculator.choose');

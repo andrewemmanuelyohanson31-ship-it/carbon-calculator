@@ -25,6 +25,7 @@ class CalculatorFlowTest extends TestCase
     public function test_full_flow_saves_and_shows_results_recommendations_and_history(): void
     {
         $this->get('/')->assertOk()->assertSee('Start calculating');
+        $this->get('/about')->assertOk()->assertSee('Background')->assertSee('Very high');
         $this->get('/calculator')->assertOk();
         $this->get('/calculator/form?categories[]=transport')->assertOk()
             ->assertSee('Distance by car')->assertSee('name="_token"', false);
@@ -36,6 +37,7 @@ class CalculatorFlowTest extends TestCase
 
         $this->withCookie('visitor_id', $visitor)->get("/results/{$calc->id}")
             ->assertOk()->assertSee('Household energy')->assertSee('Transport')
+            ->assertSee('Is this fine or bad?')->assertSee('gauge-marker', false)
             ->assertHeader('X-Frame-Options', 'DENY');
         $this->withCookie('visitor_id', $visitor)->get("/results/{$calc->id}/recommendations")
             ->assertOk()->assertSee('Keep your car maintained');

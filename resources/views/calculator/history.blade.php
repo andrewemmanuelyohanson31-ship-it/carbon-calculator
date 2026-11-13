@@ -15,7 +15,7 @@
         <div class="card table-wrap">
             <table>
                 <thead>
-                    <tr><th>Date</th><th>Categories</th><th>Total</th><th>Per person</th><th></th></tr>
+                    <tr><th>Date</th><th>Categories</th><th>Total</th><th>Per person</th><th>Rating</th><th></th></tr>
                 </thead>
                 <tbody>
                     @foreach ($calculations as $calc)
@@ -24,6 +24,8 @@
                             <td>{{ collect(array_keys($calc->breakdown))->map(fn ($c) => $labels[$c])->join(', ') }}</td>
                             <td>{{ number_format($calc->total_kg / 1000, 2) }} t</td>
                             <td>{{ number_format($calc->total_kg / $calc->household_size / 1000, 2) }} t</td>
+                            @php $rating = $calculator->rating($calc->total_kg / $calc->household_size); @endphp
+                            <td><span class="badge level-{{ $rating['level'] }}">{{ $rating['label'] }}</span></td>
                             <td><a href="{{ route('results', $calc) }}">View</a></td>
                         </tr>
                     @endforeach

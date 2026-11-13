@@ -13,6 +13,7 @@
             <nav>
                 <a href="{{ route('calculator.choose') }}" @class(['active' => request()->routeIs('calculator.*')])>Calculator</a>
                 <a href="{{ route('history') }}" @class(['active' => request()->routeIs('history')])>History</a>
+                <a href="{{ route('about') }}" @class(['active' => request()->routeIs('about')])>About</a>
             </nav>
         </div>
     </header>

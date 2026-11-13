@@ -8,7 +8,10 @@
         <h1>How much CO₂ does your home produce?</h1>
         <p class="lead">Answer a few questions about your energy use, travel and shopping habits.
             In about two minutes you'll see your yearly emissions and simple ways to cut them.</p>
-        <a href="{{ route('calculator.choose') }}" class="btn">Start calculating</a>
+        <div class="hero-actions">
+            <a href="{{ route('calculator.choose') }}" class="btn">Start calculating</a>
+            <a href="{{ route('about') }}" class="btn btn-ghost">How it works</a>
+        </div>
     </section>
 
     <section class="grid-3">

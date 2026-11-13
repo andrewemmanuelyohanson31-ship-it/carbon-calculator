@@ -33,6 +33,18 @@ class CarbonCalculatorTest extends TestCase
         $this->assertSame(['transport'], array_keys($result));
     }
 
+    public function test_rating_bands_per_person(): void
+    {
+        $calc = new CarbonCalculator;
+
+        $this->assertSame('Low', $calc->rating(0)['label']);
+        $this->assertSame('Low', $calc->rating(1999)['label']);
+        $this->assertSame('Moderate', $calc->rating(2000)['label']);
+        $this->assertSame('High', $calc->rating(4700)['label']);
+        $this->assertSame('Very high', $calc->rating(10000)['label']);
+        $this->assertSame('Very high', $calc->rating(50000)['label']);
+    }
+
     public function test_recommendations_are_sorted_and_skip_what_is_already_done(): void
     {
         $tips = (new CarbonCalculator)->recommendations($this->input);

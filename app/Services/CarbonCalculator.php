@@ -35,6 +35,32 @@ class CarbonCalculator
 
     public const WORLD_AVERAGE_PER_PERSON = 4700; // kg CO2 per person per year
 
+    // Per person per year. 2 t ≈ what the Paris 1.5–2 °C goals allow by 2030; 10 t ≈ high-income countries.
+    public const RATINGS = [
+        ['max' => 2000, 'level' => 'low', 'label' => 'Low',
+            'text' => 'Great — in line with the roughly 2 t per person needed to meet the Paris climate goals.'],
+        ['max' => 4700, 'level' => 'moderate', 'label' => 'Moderate',
+            'text' => 'Still fine — below the world average of 4.7 t, but above the Paris target.'],
+        ['max' => 10000, 'level' => 'high', 'label' => 'High',
+            'text' => 'Above the world average. The recommendations show where to cut first.'],
+        ['max' => PHP_FLOAT_MAX, 'level' => 'very-high', 'label' => 'Very high',
+            'text' => 'More than twice the world average, similar to people in high-income countries.'],
+    ];
+
+    public const GAUGE_MAX = 12000; // right end of the results gauge, kg
+
+    /** @return array{max: float, level: string, label: string, text: string} */
+    public function rating(float $kgPerPerson): array
+    {
+        foreach (self::RATINGS as $rating) {
+            if ($kgPerPerson < $rating['max']) {
+                return $rating;
+            }
+        }
+
+        return self::RATINGS[array_key_last(self::RATINGS)];
+    }
+
     /** @return array<string, float> kg CO2e per year for each chosen category */
     public function calculate(array $in): array
     {

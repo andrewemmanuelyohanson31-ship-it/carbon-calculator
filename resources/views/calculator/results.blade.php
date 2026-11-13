@@ -23,6 +23,13 @@
         </div>
     </div>
 
+    <section class="card rating">
+        <h2>Is this fine or bad? <span class="badge level-{{ $rating['level'] }}">{{ $rating['label'] }}</span></h2>
+        <p>{{ $rating['text'] }}</p>
+        <x-rating-scale :kg="$perPerson" />
+        <p class="muted">Rated per person per year. <a href="{{ route('about') }}#rating">How is this rated?</a></p>
+    </section>
+
     <section class="card">
         <h2>Breakdown</h2>
         @foreach ($calc->breakdown as $category => $kg)

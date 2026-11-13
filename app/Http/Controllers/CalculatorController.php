@@ -77,6 +77,7 @@ class CalculatorController extends Controller
             'calc' => $calculation,
             'labels' => CarbonCalculator::CATEGORIES,
             'worldAverage' => CarbonCalculator::WORLD_AVERAGE_PER_PERSON,
+            'rating' => $this->calculator->rating($calculation->total_kg / $calculation->household_size),
         ]);
     }
 
@@ -99,6 +100,7 @@ class CalculatorController extends Controller
                 ? Calculation::where('visitor_id', $visitorId)->latest()->paginate(10)
                 : collect(),
             'labels' => CarbonCalculator::CATEGORIES,
+            'calculator' => $this->calculator,
         ]);
     }
 
