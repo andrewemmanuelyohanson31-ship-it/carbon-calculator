@@ -176,4 +176,13 @@ nav[role=navigation] ul { display: flex; gap: 1rem; list-style: none; padding: 0
 @media (max-width: 560px) {
     h1, .hero h1 { font-size: 1.6rem; }
     .tip { flex-direction: column; align-items: flex-start; }
+
+    .table-wrap th, .table-wrap td { white-space: normal; }
+
+    /* history: one card per row instead of a too-wide table */
+    .history-table thead { display: none; }
+    .history-table tr { display: block; padding: .5rem 0; border-bottom: 1px solid var(--line); }
+    .history-table tr:last-child { border-bottom: 0; }
+    .history-table td { display: flex; justify-content: space-between; gap: 1rem; padding: .3rem 1rem; border: 0; white-space: normal; text-align: right; }
+    .history-table td[data-label]::before { content: attr(data-label); color: var(--muted); font-size: .85rem; text-align: left; }
 }
